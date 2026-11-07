@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX | Engineered for Velocity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        apex: { 950: '#09090b', 900: '#121215', 800: '#1a1a1f', 700: '#272730', 600: '#3f3f4e', 500: '#717182', 400: '#a1a1b5', 300: '#d4d4d8', 100: '#f4f4f5' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav { background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(16px); }
+        .shoe-shadow { filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5)); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #272730; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f4e; }
+    </style>
+</head>
+<body class="bg-apex-950 text-apex-100 font-sans antialiased selection:bg-amber-400 selection:text-apex-950 overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-apex-950 font-extrabold text-xl shadow-lg group-hover:scale-105 transition-transform">A</div>
+                <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">APEX</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-apex-300">
+                <a href="#collection" class="hover:text-amber-400 transition-colors">Collection</a>
+                <a href="#innovation" class="hover:text-amber-400 transition-colors">Carbon Tech</a>
+                <a href="#customizer" class="hover:text-amber-400 transition-colors">3D Studio</a>
+                <a href="#reviews" class="hover:text-amber-400 transition-colors">Reviews</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2.5 rounded-xl bg-apex-800 border border-white/10 hover:border-amber-400/50 text-apex-200 hover:text-amber-400 transition-all">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amber-500 text-apex-950 font-bold text-xs flex items-center justify-center scale-0 transition-transform">0</span>
+                </button>
+                <a href="#collection" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-sm shadow-lg shadow-amber-500/20 hover:scale-105 transition-all">
+                    Shop Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-apex-950 to-apex-950 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-amber-400 text-xs font-bold tracking-widest uppercase">
+                    <i data-lucide="zap" class="w-3.5 h-3.5"></i> Apex Carbon Series V4
+                </div>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none">
+                    ENGINEERED FOR <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-200 bg-clip-text text-transparent">VELOCITY.</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-apex-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    Unleash unmatched kinetic energy return with aerospace-grade carbon fiber plates and proprietary nitrogen-infused cushioning.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#collection" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-base shadow-xl shadow-amber-500/25 flex items-center justify-center gap-3 hover:scale-105 transition-all">
+                        Explore Collection <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#customizer" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-apex-800 hover:bg-apex-700 border border-white/10 text-white font-semibold text-base flex items-center justify-center gap-3 transition-all">
+                        Customize Colorway
+                    </a>
+                </div>
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <div class="text-3xl font-extrabold text-white">185g</div>
+                        <div class="text-xs text-apex-400 font-medium">Ultralight Build</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-amber-400">92%</div>
+                        <div class="text-xs text-apex-400 font-medium">Energy Return</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white">100k</div>
+                        <div class="text-xs text-apex-400 font-medium">Endurance Tested</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-amber-500/20 blur-3xl -z-10 animate-pulse"></div>
+                <div id="hero-shoe-card" class="relative group cursor-pointer shoe-shadow">
+                    <img id="hero-shoe-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop" alt="Apex Pro V4" class="w-full max-w-md rounded-3xl border border-white/10 object-cover aspect-square group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-nav border border-white/10 flex items-center justify-between backdrop-blur-md">
+                        <div>
+                            <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">Flagship Edition</div>
+                            <div class="text-lg font-bold text-white">Apex Pro V4 Crimson</div>
+                        </div>
+                        <div class="text-xl font-extrabold text-white">$240</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND TICKER -->
+    <div class="py-8 bg-apex-900 border-y border-white/10 overflow-hidden">
+        <div class="flex gap-16 items-center justify-around max-w-7xl mx-auto px-6 opacity-70 grayscale hover:grayscale-0 transition-all text-sm font-bold tracking-widest uppercase text-apex-400">
+            <span>• Marathon Tested</span>
+            <span>• Carbon Fiber Core</span>
+            <span>• Kinetic Foam</span>
+            <span>• Zero Gravity Fit</span>
+            <span>• Sustainable Mesh</span>
+        </div>
+    </div>
+
+    <!-- PRODUCT COLLECTION -->
+    <section id="collection" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Curated Footwear</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mt-2">FEATURED EDITIONS</h2>
+            </div>
+            <div class="flex gap-2 p-1 bg-apex-900 rounded-xl border border-white/10 w-fit">
+                <button onclick="filterShoes('all')" class="px-4 py-2 rounded-lg bg-amber-500 text-apex-950 font-bold text-sm transition-all filter-btn active">All</button>
+                <button onclick="filterShoes('running')" class="px-4 py-2 rounded-lg text-apex-300 hover:text-white font-semibold text-sm transition-all filter-btn">Running</button>
+                <button onclick="filterShoes('lifestyle')" class="px-4 py-2 rounded-lg text-apex-300 hover:text-white font-semibold text-sm transition-all filter-btn">Lifestyle</button>
+            </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="product-item group bg-apex-900 rounded-3xl border border-white/10 overflow-hidden hover:border-amber-400/50 transition-all flex flex-col justify-between" data-category="running">
+                <div class="relative overflow-hidden aspect-[4/3] bg-apex-800">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Apex Pro V4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-amber-500 text-apex-950 font-bold text-xs">Best Seller</span>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs text-amber-400 font-bold tracking-wider uppercase">Running</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Apex Pro V4 Crimson</h3>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">$240</span>
+                    </div>
+                    <p class="text-sm text-apex-400 font-light line-clamp-2">Elite marathon shoe equipped with full-length carbon plate and ultra-responsive Pebax foam.</p>
+                    <button onclick="addToCart('Apex Pro V4 Crimson', 240, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop')" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-sm shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition-all">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-item group bg-apex-900 rounded-3xl border border-white/10 overflow-hidden hover:border-amber-400/50 transition-all flex flex-col justify-between" data-category="lifestyle">
+                <div class="relative overflow-hidden aspect-[4/3] bg-apex-800">
+                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=800&auto=format&fit=crop" alt="Apex Urban Knit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-white font-bold text-xs border border-white/20">New Release</span>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs text-amber-400 font-bold tracking-wider uppercase">Lifestyle</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Apex Urban Knit Onyx</h3>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">$185</span>
+                    </div>
+                    <p class="text-sm text-apex-400 font-light line-clamp-2">Seamless engineered knit upper designed for effortless all-day city comfort and sleek aesthetics.</p>
+                    <button onclick="addToCart('Apex Urban Knit Onyx', 185, 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=800&auto=format&fit=crop')" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-sm shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition-all">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-item group bg-apex-900 rounded-3xl border border-white/10 overflow-hidden hover:border-amber-400/50 transition-all flex flex-col justify-between" data-category="running">
+                <div class="relative overflow-hidden aspect-[4/3] bg-apex-800">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop" alt="Apex CloudStride" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-orange-500 text-apex-950 font-bold text-xs">Limited</span>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs text-amber-400 font-bold tracking-wider uppercase">Running</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Apex CloudStride Vapor</h3>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">$210</span>
+                    </div>
+                    <p class="text-sm text-apex-400 font-light line-clamp-2">Maximum cushioning trainer engineered to absorb high impact on long recovery runs.</p>
+                    <button onclick="addToCart('Apex CloudStride Vapor', 210, 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop')" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-sm shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition-all">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INNOVATION SECTION -->
+    <section id="innovation" class="py-24 bg-apex-900 border-y border-white/15 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Patented Architecture</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">THE CARBON PROPULSION SYSTEM</h2>
+                <p class="text-apex-300 font-light leading-relaxed">
+                    Our proprietary bifurcated carbon fiber plate acts as a springlever, storing energy on foot strike and explosively releasing it at toe-off. Combined with nitrogen-infused midsole foam, you experience 22% higher energy return than traditional trainers.
+                </p>
+                <div class="space-y-4 pt-4">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-apex-800 border border-white/10">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 font-bold">01</div>
+                        <div>
+                            <h4 class="font-bold text-white">Aerospace Carbon Plate</h4>
+                            <p class="text-sm text-apex-400 mt-1">Rigid spoon-shaped carbon architecture stabilizes ankle joint and maximizes forward momentum.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-apex-800 border border-white/10">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 font-bold">02</div>
+                        <div>
+                            <h4 class="font-bold text-white">NitroFoam™ Midsole</h4>
+                            <p class="text-sm text-apex-400 mt-1">Supercritical fluid foaming creates millions of closed nitrogen gas cells for weightless cushioning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-transparent rounded-3xl blur-2xl"></div>
+                <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=1000&auto=format&fit=crop" alt="Shoe Tech" class="relative rounded-3xl border border-white/15 w-full object-cover aspect-[4/3] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE 3D/COLOR CUSTOMIZER -->
+    <section id="customizer" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Interactive 3D Studio</span>
+            <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">BUILD YOUR COLORWAY</h2>
+            <p class="text-apex-300">Personalize your Apex Pro V4 with custom color palettes before ordering.</p>
+        </div>
+
+        <div class="bg-apex-900 border border-white/10 rounded-3xl p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 flex flex-col items-center justify-center">
+                <div id="custom-shoe-preview" class="w-full max-w-lg aspect-square rounded-2xl bg-apex-800 border border-white/10 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                    <img id="custom-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Custom Shoe" class="w-4/5 object-contain shoe-shadow transition-all duration-500">
+                    <div id="color-badge" class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-600 text-white font-bold text-xs uppercase shadow-lg">Crimson Red</div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Apex Pro V4 Bespoke</h3>
+                    <p class="text-sm text-apex-400 mt-1">Select your chassis accent tone:</p>
+                </div>
+                
+                <div class="grid grid-cols-4 gap-4">
+                    <button onclick="setShoeColor('red', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop', 'Crimson Red', 'bg-red-600')" class="p-4 rounded-2xl bg-apex-800 border-2 border-red-500 hover:scale-105 transition-all flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-red-600 shadow-md"></div>
+                        <span class="text-xs font-bold text-white">Crimson</span>
+                    </button>
+                    <button onclick="setShoeColor('volt', 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=800&auto=format&fit=crop', 'Volt Neon', 'bg-emerald-400')" class="p-4 rounded-2xl bg-apex-800 border-2 border-transparent hover:border-emerald-400 hover:scale-105 transition-all flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-emerald-400 shadow-md"></div>
+                        <span class="text-xs font-bold text-white">Volt</span>
+                    </button>
+                    <button onclick="setShoeColor('cobalt', 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop', 'Cobalt Blue', 'bg-blue-600')" class="p-4 rounded-2xl bg-apex-800 border-2 border-transparent hover:border-blue-500 hover:scale-105 transition-all flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 shadow-md"></div>
+                        <span class="text-xs font-bold text-white">Cobalt</span>
+                    </button>
+                    <button onclick="setShoeColor('onyx', 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=800&auto=format&fit=crop', 'Stealth Onyx', 'bg-zinc-900')" class="p-4 rounded-2xl bg-apex-800 border-2 border-transparent hover:border-zinc-500 hover:scale-105 transition-all flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-zinc-900 border border-white/20 shadow-md"></div>
+                        <span class="text-xs font-bold text-white">Onyx</span>
+                    </button>
+                </div>
+
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div>
+                        <div class="text-xs text-apex-400 font-bold uppercase">Custom Edition Price</div>
+                        <div class="text-2xl font-extrabold text-white mt-0.5">$260.00</div>
+                    </div>
+                    <button onclick="addCustomShoe()" class="px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-sm shadow-lg shadow-amber-500/25 hover:scale-105 transition-all">
+                        Order Custom Pair
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="reviews" class="py-24 bg-apex-900 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-16 space-y-4">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Athlete Verified</span>
+                <h2 class="text-4xl font-extrabold tracking-tight">TRUSTED BY ELITE RUNNERS</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl bg-apex-800 border border-white/10 space-y-4">
+                    <div class="flex text-amber-400 gap-1">
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    </div>
+                    <p class="text-apex-200 font-light italic">"Slashed 4 minutes off my half-marathon personal best on the first run. The carbon propulsion is unreal."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 font-bold text-apex-950 flex items-center justify-center">JD</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Julian Davies</h4>
+                            <p class="text-xs text-apex-400">Elite Marathoner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-apex-800 border border-white/10 space-y-4">
+                    <div class="flex text-amber-400 gap-1">
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    </div>
+                    <p class="text-apex-200 font-light italic">"The most comfortable lifestyle sneaker I've ever worn. Sleek enough for meetings, supportive enough for all-day walking."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 font-bold text-apex-950 flex items-center justify-center">SM</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Sarah Mitchell</h4>
+                            <p class="text-xs text-apex-400">Architect & Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-apex-800 border border-white/10 space-y-4">
+                    <div class="flex text-amber-400 gap-1">
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    </div>
+                    <p class="text-apex-200 font-light italic">"Unmatched bounce and stability. The build quality easily rivals luxury brands at twice the price."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 font-bold text-apex-950 flex items-center justify-center">AK</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Arjun Kapoor</h4>
+                            <p class="text-xs text-apex-400">Endurance Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-apex-950 border-t border-white/10 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-apex-950 font-extrabold text-lg">A</div>
+                    <span class="text-lg font-extrabold tracking-wider text-white">APEX</span>
+                </div>
+                <p class="text-sm text-apex-400 font-light">Pushing the boundaries of footwear engineering and kinetic propulsion.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Collection</h4>
+                <ul class="space-y-2 text-sm text-apex-400">
+                    <li><a href="#collection" class="hover:text-amber-400 transition-colors">Carbon Racers</a></li>
+                    <li><a href="#collection" class="hover:text-amber-400 transition-colors">City Knit Series</a></li>
+                    <li><a href="#collection" class="hover:text-amber-400 transition-colors">Recovery Trainers</a></li>
+                    <li><a href="#customizer" class="hover:text-amber-400 transition-colors">Bespoke Studio</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Technology</h4>
+                <ul class="space-y-2 text-sm text-apex-400">
+                    <li><a href="#innovation" class="hover:text-amber-400 transition-colors">Carbon Plate</a></li>
+                    <li><a href="#innovation" class="hover:text-amber-400 transition-colors">NitroFoam™</a></li>
+                    <li><a href="#" class="hover:text-amber-400 transition-colors">Kinetic Testing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Stay Ahead</h4>
+                <p class="text-xs text-apex-400 mb-3">Subscribe for limited drop alerts and athlete insights.</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Enter your email" class="bg-apex-900 border border-white/10 rounded-xl px-4 py-2 text-sm text-white placeholder-apex-500 focus:outline-none focus:border-amber-400 flex-1">
+                    <button onclick="alert('Successfully subscribed to Apex drops!')" class="px-4 py-2 rounded-xl bg-amber-500 text-apex-950 font-bold text-sm hover:bg-amber-400 transition-all">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-apex-500">
+            <div>© 2026 APEX Footwear Inc. All rights reserved.</div>
+            <div class="flex gap-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-apex-300">Privacy Policy</a>
+                <a href="#" class="hover:text-apex-300">Terms of Service</a>
+                <a href="#" class="hover:text-apex-300">Sustainability</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OVER CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-apex-950/80 backdrop-blur-md hidden transition-opacity opacity-0">
+        <div class="absolute inset-y-0 right-0 max-w-md w-full bg-apex-900 border-l border-white/10 p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300" id="cart-panel">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+                        <h3 class="font-bold text-lg text-white">Your Shopping Cart</h3>
+                    </div>
+                    <button onclick="toggleCart()" class="p-2 rounded-xl bg-apex-800 hover:bg-apex-700 text-apex-300 hover:text-white transition-all">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="space-y-4 max-h-[50vh] overflow-y-auto pr-2">
+                    <!-- Cart items populated by JS -->
+                    <div class="text-center py-12 text-apex-400 text-sm">Your cart is currently empty.</div>
+                </div>
+            </div>
+
+            <div class="space-y-4 pt-6 border-t border-white/10">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-apex-400">Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold text-white text-lg">$0.00</span>
+                </div>
+                <button onclick="checkout()" class="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-apex-950 font-bold text-base shadow-xl shadow-amber-500/25 transition-all">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIC & GSAP -->
+    <script>
+        lucide.createIcons();
+
+        // Cart State
+        let cart = [];
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const panel = document.getElementById('cart-panel');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    drawer.classList.remove('opacity-0');
+                    panel.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                drawer.classList.add('opacity-0');
+                panel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function addToCart(name, price, image) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const container = document.getElementById('cart-items');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            if (totalCount > 0) {
+                badge.innerText = totalCount;
+                badge.classList.remove('scale-0');
+            } else {
+                badge.classList.add('scale-0');
+            }
+
+            subtotalEl.innerText = `$${subtotal.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-center py-12 text-apex-400 text-sm">Your cart is currently empty.</div>';
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="flex items-center gap-4 p-3 rounded-2xl bg-apex-800 border border-white/5">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover bg-apex-700">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-white text-sm truncate">${item.name}</h4>
+                        <div class="text-amber-400 text-xs font-bold mt-0.5">$${item.price}</div>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateQty(${index}, -1)" class="w-6 h-6 rounded bg-apex-700 text-white flex items-center justify-center text-xs">-</button>
+                            <span class="text-xs font-bold text-white">${item.quantity}</span>
+                            <button onclick="updateQty(${index}, 1)" class="w-6 h-6 rounded bg-apex-700 text-white flex items-center justify-center text-xs">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeItem(${index})" class="text-apex-400 hover:text-red-400 p-2">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function updateQty(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert('Redirecting to secure encrypted checkout...');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Product Filtering
+        function filterShoes(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-apex-950', 'font-bold');
+                btn.classList.add('text-apex-300', 'font-semibold');
+            });
+            event.target.classList.add('bg-amber-500', 'text-apex-950', 'font-bold');
+            event.target.classList.remove('text-apex-300', 'font-semibold');
+
+            document.querySelectorAll('.product-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Customizer
+        let selectedCustomName = 'Apex Pro V4 Crimson';
+        let selectedCustomPrice = 260;
+        let selectedCustomImg = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop';
+
+        function setShoeColor(colorKey, imgUrl, colorName, badgeColorClass) {
+            document.getElementById('custom-img').src = imgUrl;
+            const badge = document.getElementById('color-badge');
+            badge.innerText = colorName;
+            selectedCustomName = `Apex Pro V4 ${colorName}`;
+            selectedCustomImg = imgUrl;
+            
+            gsap.fromTo('#custom-img', { scale: 0.9, opacity: 0.5 }, { scale: 1, opacity: 1, duration: 0.4 });
+        }
+
+        function addCustomShoe() {
+            addToCart(selectedCustomName, selectedCustomPrice, selectedCustomImg);
+        }
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('#hero-shoe-card', {
+            y: 50,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            delay: 0.2
+        });
+
+        gsap.utils.toArray('.product-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.1,
+                ease: 'power3.out'
+            });
+        });
+    </script>
+</body>
+</html>
